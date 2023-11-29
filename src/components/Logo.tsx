@@ -41,5 +41,5 @@ const Title = styled.h1`
   color: #fff;
   font-family: 'Roboto';
   font-weight: 700;
-  font-size: 16;
+  font-size: 20;
 `;
