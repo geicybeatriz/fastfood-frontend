@@ -29,4 +29,14 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 426px) {
+    min-height: 100px;
+    padding: 20px 10px 10px 10px;
+    gap:15px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;

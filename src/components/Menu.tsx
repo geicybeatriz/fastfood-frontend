@@ -15,7 +15,6 @@ export default function Menu(){
     } else {
       navigate('/');
     }
-    
   }
 
   return (
@@ -42,6 +41,12 @@ const Container = styled.div`
   justify-content:center;
   align-items:center;
   gap:20px;
+
+  @media screen and (max-width: 426px) {
+    min-height: 40%;
+    width: 100%;
+    gap:15px;
+  }
 `;
 
 const StyledButton = styled.button<MenuButtonProps>`
@@ -60,4 +65,11 @@ const StyledButton = styled.button<MenuButtonProps>`
   font-size: 12;
   font-weight: bold;
   color: #fff;
+
+
+  @media screen and (max-width: 426px) {
+    min-height: 50%;
+    min-width: auto;
+  }
+
 `;

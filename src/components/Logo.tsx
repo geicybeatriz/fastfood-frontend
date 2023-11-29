@@ -14,7 +14,7 @@ export default function Logo(){
 
 const Container = styled.div`
   width: auto;
-  height: auto; 
+  height: 35px; 
 
   display: flex;
   flex-direction: row;
@@ -41,5 +41,5 @@ const Title = styled.h1`
   color: #fff;
   font-family: 'Roboto';
   font-weight: 700;
-  font-size: 20;
+  font-size: 22;
 `;
