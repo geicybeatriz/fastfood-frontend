@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { PageContext } from "../contexts/PageContext";
-import { MenuButtonProps } from "../interfaces/interfaces";
+import { PageContext } from "../../contexts/PageContext";
+import { MenuButtonProps } from "../../interfaces/interfaces";
 
 export default function Menu(){
   const { selected, setSelected } = useContext(PageContext)!;
