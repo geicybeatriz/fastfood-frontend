@@ -1,9 +1,10 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, LiHTMLAttributes } from "react";
 
 export interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isSelected: boolean;
   
 }
+
 
 export interface Product{
   id: number;
