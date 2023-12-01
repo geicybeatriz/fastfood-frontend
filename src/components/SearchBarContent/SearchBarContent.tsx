@@ -17,7 +17,9 @@ export default function SearchBarContent(){
 
 const Container = styled.div`
   width: 100%;
-  height: 110px;
+  position:sticky;
+  top:0;
+  z-index:99;
 
   padding:25px;
 

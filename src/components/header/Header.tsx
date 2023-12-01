@@ -13,11 +13,11 @@ export default function Header(){
 }
 
 const Container = styled.div`
+  width:100%;
+  
   position:fixed;
   top: 0;
-  right: 0;
-  left: 0;
-  z-index: 0;
+  z-index: 100;
 
   height: 50px;
   padding: 0 20px;

@@ -21,11 +21,19 @@ const SearchBar: React.FC<SearchBarProps> =  ({ onSearch }) =>{
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
-
-    const promise = productService.getProductBySearchBar(query);
-    promise
-      .then(res => setOptions(res.data))
-      .catch(err => console.log(err));
+    if(query.length > 0) {
+      const promise = productService.getProductBySearchBar(query);
+      promise
+        .then(res => {
+          setOptions(res.data);
+          setQuery('');
+          setOpen(true);
+        })
+        .catch(err => {
+          setOptions([]);
+          setOpen(false);
+        });
+    }
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -43,7 +51,7 @@ const SearchBar: React.FC<SearchBarProps> =  ({ onSearch }) =>{
         onChange={handleInputChange} 
         placeholder='O que você procura?' 
       />
-      <SearchList options={options} open={open} setOpen={setOpen}/>
+      {open && <SearchList options={options} open={open} setOpen={setOpen}/>}
 
     </Container>
   );
@@ -53,9 +61,13 @@ export default SearchBar;
 
 const Container = styled.div`
   width: 100%;
-  min-height:30px;
+  height:auto;
 
-  gap:5px;
+  gap:1px;
+  display: flex;
+  flex-direction:column;
+  align-items:start;
+  justify-content:center;
 `;
 
 const StyledInput = styled.input`
