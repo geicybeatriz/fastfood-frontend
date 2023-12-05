@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Category from "./Category";
 import { CategorySelectProps } from "../BodyPage/BodyPage";
+import Category from "./Category";
 
 const CategoriesContainer: React.FC<CategorySelectProps> = ({setCategory, category}) => {
   return (
@@ -37,7 +37,7 @@ const Title = styled.h1`
   height:30px;
 
   text-align: left;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:16px;
   font-weight:700;
   color: #000;
@@ -52,7 +52,7 @@ const Text = styled.h3`
   height:20px;
 
   text-align: left;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:14px;
   font-weight:400;
   color: #000;

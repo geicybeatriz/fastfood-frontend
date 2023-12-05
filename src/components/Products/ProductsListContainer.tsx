@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import ProductComponent from "./ProductComponent";
 import React from "react";
+import styled from "styled-components";
 import { CategorySelectProps } from "../BodyPage/BodyPage";
+import ProductComponent from "./ProductComponent";
 
 const ProductsListContainer: React.FC<CategorySelectProps> = ({category, setCategory}) => {
   return (
@@ -37,7 +37,7 @@ const Title = styled.h1`
   height:30px;
 
   text-align: left;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:16px;
   font-weight:700;
   color: #000;
@@ -52,7 +52,7 @@ const Text = styled.h3`
   height:30px;
 
   text-align: left;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:14px;
   font-weight:400;
   color: #000;

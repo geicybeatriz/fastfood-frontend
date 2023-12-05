@@ -68,7 +68,7 @@ const Title = styled.h2`
   height:20px;
 
   text-align:center;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:12px;
   font-weight:400;
   

@@ -126,7 +126,7 @@ const Title = styled.h1`
   width:90%;
 
   text-align:center;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:12px;
   font-weight:700;
   word-wrap:normal;

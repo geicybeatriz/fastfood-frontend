@@ -80,7 +80,7 @@ const StyledInput = styled.input`
   background-color:#f4f4f4;
 
   color: #000;
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:14;
 
   ::placeholder{

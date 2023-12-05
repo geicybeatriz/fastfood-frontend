@@ -48,7 +48,7 @@ const Item = styled.article`
   align-items:center;
   justify-content:center;
   
-  font-family:'Roboto';
+  font-family:'Poppins';
   font-size:12px;
   font-weight:400;
   color:#000;

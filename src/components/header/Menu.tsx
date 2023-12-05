@@ -61,7 +61,7 @@ const StyledButton = styled.button<MenuButtonProps>`
   border: none;
   background-color: ${(props) => (props.isSelected ? '#1A410E' : '#295D14')};
 
-  font-family: 'Roboto';
+  font-family: 'Poppins';
   font-size: 12;
   font-weight: bold;
   color: #fff;

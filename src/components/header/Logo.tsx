@@ -39,7 +39,7 @@ const Image = styled.div`
 
 const Title = styled.h1`
   color: #fff;
-  font-family: 'Roboto';
+  font-family: 'Poppins';
   font-weight: 700;
   font-size: 22;
 `;
