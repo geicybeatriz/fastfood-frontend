@@ -1,17 +1,20 @@
-import { Key } from "react";
 import styled from "styled-components";
+import { useModal } from "../../contexts/ModalContext";
 import { SearchListProps } from "./SearchBar";
 
 const SearchList = ({ options, open, setOpen } : SearchListProps) => {
+  const { openModal } = useModal();
+
   const containerHeight = options.length * 30 + 5; 
-  const handleItemClick = (id: Key) => {
-    //IMPLEMENTAR A BUSCA AOS PRODUTOS PELO ID E ABRIR O MODAL COM AS INFORMAÇÕES DO PRODUTO 
+  
+  const handleItemClick = (id: number) => {
+    openModal(id);
     setOpen(!open);
   }
 
   return (
     <StyledContainer open={open} height={containerHeight}>
-      {options?.map((item: {name: string}, id: Key ) => {
+      {options?.map((item: {name: string}, id: number ) => {
         return (
           <Item key={id} onClick={() => handleItemClick(id)}>{item.name} </Item>
         )}) 
@@ -32,6 +35,8 @@ const StyledContainer = styled.div<{open:boolean; height:number}>`
   justify-content:center;
   align-items:center;
   gap:5px;
+
+  z-index:2;
 
 `;
 

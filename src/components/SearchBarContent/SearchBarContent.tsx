@@ -17,9 +17,6 @@ export default function SearchBarContent(){
 
 const Container = styled.div`
   width: 100%;
-  position:sticky;
-  top:0;
-  z-index:99;
 
   padding:25px;
 
@@ -42,7 +39,7 @@ const Title = styled.h2`
 
   text-align: left;
   font-family:'Roboto';
-  font-size:20;
+  font-size:20px;
   font-weight:700;
   color: #000;
 
@@ -51,6 +48,6 @@ const Title = styled.h2`
   justify-content:left;
 
   @media screen and (min-width: 427px) {
-    font-size:18;
+    font-size:18px;
   }
 `;

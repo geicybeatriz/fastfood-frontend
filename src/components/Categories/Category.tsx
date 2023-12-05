@@ -24,31 +24,41 @@ const Category = () => {
 export default Category;
 
 const Container = styled.article<CategoryProps>`
-  width:150px;
-  height:120px;
+  width:120px;
+  height:100px;
+
+  padding:10px;
 
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:5px;
 
   box-shadow:0 0 10px rgba(0, 0, 0, 0.3);
   border-radius:10px;
 
   cursor: pointer;
 
+  @media screen and (min-width: 427px) {
+    width:150px;
+    height:120px;    
+  }
 `;
 
 const Image = styled.img`
-  width:75px;
-  height:75px;
+  width:60px;
+  height:60px; 
 
   display:flex;
   align-items:center;
   justify-content:center;
 
   object-fit:cover;
+
+  @media screen and (min-width: 427px) {
+    width:75px;
+    height:75px;  
+  }
 `;
 
 const Title = styled.h2`

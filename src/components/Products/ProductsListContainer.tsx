@@ -1,33 +1,32 @@
 import styled from "styled-components";
-import Category from "./Category";
+import ProductComponent from "./ProductComponent";
 
-const CategoriesContainer = () => {
+const ProductsListContainer = () => {
   return (
-    <>
-      <Container>
-        <Title>Categorias</Title>
-        <Text>Navegue por categoria</Text>
-        <Content>
-          <Category/>
-        </Content>
-      </Container>
-    </>
+    <Container>
+      <Title>Produtos</Title>
+      <Text>Selecione um produto para adicionar ao seu pedido</Text>
+      <Content>
+        <ProductComponent/>
+      </Content>
+    </Container>
   )
 }
 
-export default CategoriesContainer;
+export default ProductsListContainer;
 
 const Container = styled.div`
   width:100%;
-
-  padding:25px;
+  padding:15px 25px;
 
   display:flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 
   @media screen and (min-width: 427px) {
     width:82%;
+    padding:25px;
   }
 `;
 
@@ -48,7 +47,7 @@ const Title = styled.h1`
 
 const Text = styled.h3`
   width:100%;
-  height:20px;
+  height:30px;
 
   text-align: left;
   font-family:'Roboto';
@@ -63,18 +62,18 @@ const Text = styled.h3`
 
 const Content = styled.div`
   width:100%;
-  
+  min-height: 400px;
+  padding:20px 0;
+
   display: flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:15px;
-  padding:15px 0;
+  gap:10px;
+  
 
-  @media screen and (min-width: 427px) {
-    width:100%;
-    min-height:200px;
-
+  @media screen and (min-width:426px){
     justify-content:space-between;
-    align-items:center;
+    column-gap:70px;
+    row-gap: 70px;
   }
 `;
