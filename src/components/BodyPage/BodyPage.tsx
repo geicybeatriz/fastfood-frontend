@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import CategoriesContainer from "../Categories/CategoriesContainer";
 import SearchBarContent from "../SearchBarContent/SearchBarContent";
 
 export default function BodyPage(){
   return (
     <ContainerBodyPage>
       <SearchBarContent/>
+      <CategoriesContainer/>
     </ContainerBodyPage>
   );
 }
@@ -16,13 +18,12 @@ const ContainerBodyPage = styled.main`
   
   display:flex;
   flex-direction: column;
-  justify-content:flex-start;
   align-items:center;
   margin-top:100px;
+
 
   @media screen and (min-width: 427px) {
     min-height: 100px;
     margin-top:50px;
-    justify-content: space-between;
   }
 `;
