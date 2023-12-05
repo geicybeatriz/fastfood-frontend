@@ -12,7 +12,6 @@ export interface CategorySelectProps {
 export default function BodyPage(){
   const [category, setCategory] = useState("")
   //add footer com as infos do cart
-  //criar uma state para filtrar os produtos por categoria
 
   return (
     <ContainerBodyPage>
