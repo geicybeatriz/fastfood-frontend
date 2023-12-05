@@ -1,5 +1,6 @@
-import { Key } from "react";
+import React, { Key } from "react";
 import styled from "styled-components";
+import { CategorySelectProps } from "../BodyPage/BodyPage";
 import categoriesData from "./CategoriesData";
 
 interface CategoryProps{
@@ -7,12 +8,13 @@ interface CategoryProps{
   type: string;
 }
 
-const Category = () => {
+const Category: React.FC<CategorySelectProps> = ({setCategory}) => {
+  
   return (
     <>
       {categoriesData.map((item, id) => {
         return (
-          <Container key={id} type={item.type}>
+          <Container key={id} type={item.type} onClick={() => setCategory(item.type)}>
             <Image src={item.picture} alt={item.name}></Image>
             <Title>{item.name}</Title>
           </Container>

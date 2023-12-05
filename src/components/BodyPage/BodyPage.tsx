@@ -2,15 +2,25 @@ import styled from "styled-components";
 import CategoriesContainer from "../Categories/CategoriesContainer";
 import ProductsListContainer from "../Products/ProductsListContainer";
 import SearchBarContent from "../SearchBarContent/SearchBarContent";
+import { SetStateAction, useState } from "react";
+
+export interface CategorySelectProps {
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>
+}
 
 export default function BodyPage(){
+  const [category, setCategory] = useState("")
+  //add footer com as infos do cart
+  //criar uma state para filtrar os produtos por categoria
+
   return (
     <ContainerBodyPage>
       <FixedContainer>
         <SearchBarContent/>
-        <CategoriesContainer/>
+        <CategoriesContainer setCategory={setCategory} category={""}/>
       </FixedContainer>
-      <ProductsListContainer/>
+      <ProductsListContainer category={category} setCategory={setCategory}/>
     </ContainerBodyPage>
   );
 }

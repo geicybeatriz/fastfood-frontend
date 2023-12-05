@@ -1,70 +1,68 @@
+import React, { Key, useEffect, useState } from "react";
 import styled from "styled-components";
+import { Product } from "../../interfaces/interfaces";
+import productService from "../../services/ProductsService";
+import { CategorySelectProps } from "../BodyPage/BodyPage";
 
-const ProductComponent = () => {
+interface ProductProps{
+  id: number;
+  key: Key;
+}
+
+const ProductComponent: React.FC<CategorySelectProps> = ({category}) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(()=> {
+    const fetchData = () => {
+      const productsData = productService.getAllProducts();
+      productsData.then(res => setProducts(res.data));
+      productsData.catch(err => console.log(err));
+    }
+    fetchData();
+  },[]);
+
+  let filteredProducts: Product[] = [];
+
+  if (category) {
+    console.log(category);
+    filteredProducts = products.filter((item: Product) => {
+      console.log(item, category);
+      return item.category === category});
+  } else {
+    filteredProducts = [...products];
+  }
+
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    });
+  };
+
   return (
     <>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-        <Details>
-          <Title>Burguer Smash</Title>
-          <Text>Tem carne</Text>
-          <Title>30,50</Title>
-        </Details>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
-      <Container>
-        <RedOverlay/>
-        <ProductCircle>
-          <ProductImage src="https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png"/>
-        </ProductCircle>
-      </Container>
+      {filteredProducts.map((item, i) => {
+        return (
+          <Container key={i} id={item.id}>
+            <RedOverlay/>
+            <ProductCircle>
+              <ProductImage src={item.picture} alt={item.name}/>
+            </ProductCircle>
+            <Details>
+              <Title>{item.name}</Title>
+              <Title>{formatCurrency(item.price)}</Title>
+            </Details>
+          </Container>
+        )
+      })}
     </>
-    
   )
 }
 
 export default ProductComponent;
 
-const Container = styled.div`
+const Container = styled.div<ProductProps>`
   width:130px;
   height:180px;  
   
@@ -94,7 +92,6 @@ const RedOverlay = styled(ColorOverlay)`
   background-color: #fff;
 `;
 
-
 const ProductCircle = styled.div`
   position: relative;
   top:20px;
@@ -106,12 +103,14 @@ const ProductCircle = styled.div`
   border-radius: 50%;
   margin-top: auto;
 
+  background-color:#fff;
+
   @media screen and (min-width:427px){
     top:25px;
-    left:47.5px;
+    left:45px;
 
-    width: 85px; 
-    height: 85px;
+    width: 90px; 
+    height: 90px;
     
   }
 `;
@@ -124,25 +123,14 @@ const ProductImage = styled.img`
 `;
 
 const Title = styled.h1`
-  width:100%;
-
-  text-align:center;
-  font-family:'Roboto';
-  font-size:13px;
-  font-weight:700;
-  
-  display:flex;
-  align-items:center;
-  justify-content:center;
-`;
-const Text = styled.h2`
-  width:100%;
-  margin-bottom: 10px;
+  width:90%;
 
   text-align:center;
   font-family:'Roboto';
   font-size:12px;
-  font-weight:400;
+  font-weight:700;
+  word-wrap:normal;
+  line-height:16px;
   
   display:flex;
   align-items:center;
@@ -156,9 +144,10 @@ const Details = styled.div`
   width: 100%;
   height: 30%;
 
-  gap: 3px;
+  gap: 5px;
 
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content: space-between;
 `;

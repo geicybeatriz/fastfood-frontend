@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import ProductComponent from "./ProductComponent";
+import React from "react";
+import { CategorySelectProps } from "../BodyPage/BodyPage";
 
-const ProductsListContainer = () => {
+const ProductsListContainer: React.FC<CategorySelectProps> = ({category, setCategory}) => {
   return (
     <Container>
       <Title>Produtos</Title>
       <Text>Selecione um produto para adicionar ao seu pedido</Text>
       <Content>
-        <ProductComponent/>
+        <ProductComponent category={category} setCategory={setCategory}/>
       </Content>
     </Container>
   )

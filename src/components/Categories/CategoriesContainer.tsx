@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import Category from "./Category";
+import { CategorySelectProps } from "../BodyPage/BodyPage";
 
-const CategoriesContainer = () => {
+const CategoriesContainer: React.FC<CategorySelectProps> = ({setCategory, category}) => {
   return (
     <>
       <Container>
         <Title>Categorias</Title>
         <Text>Navegue por categoria</Text>
         <Content>
-          <Category/>
+          <Category setCategory={setCategory} category={""}/>
         </Content>
       </Container>
     </>

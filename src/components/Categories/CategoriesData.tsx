@@ -17,7 +17,7 @@ const categoriesData = [{
 }, {
   picture: "https://w7.pngwing.com/pngs/97/894/png-transparent-strawberry-cheesecake-dessert-toast-cake-thumbnail.png",
   name: "Sobremesas",
-  type: "sobremesa"
+  type: "desserts"
 }];
 
 export default categoriesData;
