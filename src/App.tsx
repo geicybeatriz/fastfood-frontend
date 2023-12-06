@@ -1,13 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { CartProvider } from './contexts/CartContext';
+import { ModalProvider } from './contexts/ModalContext';
 import { PageProvider } from './contexts/PageContext';
 import DeliveryPage from './pages/DeliveryPage';
 import Homepage from './pages/Homepage';
 import KitchenPage from './pages/KitchenPage';
-import { ModalProvider } from './contexts/ModalContext';
 
 function App() {
   return (
     <PageProvider >
+    <CartProvider>
     <ModalProvider>
     <BrowserRouter>
       <Routes>
@@ -17,6 +19,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </ModalProvider>
+    </CartProvider>
     </PageProvider>
   );
 }
