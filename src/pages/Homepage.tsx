@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import BodyPage from "../components/BodyPage/BodyPage";
-import Header from "../components/header/Header";
+/* eslint-disable react/react-in-jsx-scope */
+import styled from 'styled-components';
+import BodyPage from '../components/BodyPage/BodyPage';
+import Header from '../components/header/Header';
 
-export default function Homepage(){
+export default function Homepage() {
   return (
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     <StyledPageContainer>
       <Header />
       <BodyPage />
@@ -16,5 +18,5 @@ export const StyledPageContainer = styled.div`
   height: 100vh;
 
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 `;

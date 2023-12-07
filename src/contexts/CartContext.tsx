@@ -1,35 +1,43 @@
-import React, { ReactNode, createContext, useContext, useEffect, useReducer } from "react";
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+} from 'react';
 
 interface CartItem {
-  id:number;
-  name:string;
+  id: number;
+  name: string;
   price: number;
-  quantity:number;
+  quantity: number;
   observations?: string;
   additionals: AdditionalItems[];
 }
 
 interface AdditionalItems {
-  id:number;
+  id: number;
   name: string;
   price: number;
 }
 
-interface CartState{
+interface CartState {
   cartItems: CartItem[];
 }
 
-type CartAction = 
-  | {type: 'ADD_TO_CART'; payload: CartItem}
-  | {type: 'REMOVE_FROM_CART'; payload: number}
+type CartAction =
+  | { type: 'ADD_TO_CART'; payload: CartItem }
+  | { type: 'REMOVE_FROM_CART'; payload: number }
   | { type: 'SET_CART'; payload: CartItem[] };
 
-const CartContext = createContext<{ state: CartState; dispatch: React.Dispatch<CartAction> } | undefined>(undefined);
+const CartContext = createContext<
+  { state: CartState; dispatch: React.Dispatch<CartAction> } | undefined
+>(undefined);
 
 interface CartProviderProps {
   children: ReactNode;
 }
-  
+
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART':
@@ -40,13 +48,14 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     case 'REMOVE_FROM_CART':
       return {
         ...state,
-        cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+        cartItems: state.cartItems.filter(item => item.id !== action.payload),
       };
     default:
       return state;
   }
 };
 
+// eslint-disable-next-line react/function-component-definition
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, { cartItems: [] });
 
@@ -61,8 +70,12 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(state.cartItems));
   }, [state.cartItems]);
 
-
-  return <CartContext.Provider value={{ state, dispatch }}>{children}</CartContext.Provider>;
+  return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <CartContext.Provider value={{ state, dispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 const useCart = () => {

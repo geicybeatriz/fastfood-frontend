@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
 interface ModalContextProps {
   isOpen: boolean;
@@ -9,11 +9,14 @@ interface ModalContextProps {
 
 const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
-
-export const ModalProvider: React.FC<{children: React.ReactNode} > = ({ children }) => {
+// eslint-disable-next-line react/function-component-definition
+export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [productId, setProductId] = useState(2);
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const openModal = (productId: number) => {
     setProductId(productId);
     setIsOpen(true);
@@ -24,7 +27,8 @@ export const ModalProvider: React.FC<{children: React.ReactNode} > = ({ children
   };
 
   return (
-    <ModalContext.Provider value={{ isOpen, openModal, closeModal, productId}}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <ModalContext.Provider value={{ isOpen, openModal, closeModal, productId }}>
       {children}
     </ModalContext.Provider>
   );
@@ -38,4 +42,4 @@ export const useModal = () => {
   }
 
   return context;
-}
+};

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CartProvider } from './contexts/CartContext';
 import { ModalProvider } from './contexts/ModalContext';
@@ -8,18 +9,18 @@ import KitchenPage from './pages/KitchenPage';
 
 function App() {
   return (
-    <PageProvider >
-    <CartProvider>
-    <ModalProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Homepage />} ></Route>
-        <Route path='/cozinha' element={<KitchenPage />}></Route>
-        <Route path='/retirada' element={<DeliveryPage/> }></Route>
-      </Routes>
-    </BrowserRouter>
-    </ModalProvider>
-    </CartProvider>
+    <PageProvider>
+      <CartProvider>
+        <ModalProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/cozinha" element={<KitchenPage />} />
+              <Route path="/retirada" element={<DeliveryPage />} />
+            </Routes>
+          </BrowserRouter>
+        </ModalProvider>
+      </CartProvider>
     </PageProvider>
   );
 }

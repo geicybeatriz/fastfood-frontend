@@ -1,153 +1,180 @@
-import React from "react";
-import styled from "styled-components";
-import { OrderKitchenProps } from "./KitchenOrders";
-import StyledButton from "./StyledButton";
+import React from 'react';
+import styled from 'styled-components';
+import { OrderKitchenProps } from './KitchenOrders';
+import StyledButton from './StyledButton';
 
-interface OrderStatusProps{
-  status:string;
+interface OrderStatusProps {
+  status: string;
 }
-
-const OrderKitchenDetails: React.FC<OrderKitchenProps> = ({orderList, getAllOrders}) => {
-
-  return (
-    <>
-      {orderList?.map((order, i) => {
-        return (
-          <Container key={i} status={order.status}>
-            <OrderContainer key={i} >
-              <Image alt="imagem do produto" src="https://w7.pngwing.com/pngs/993/43/png-transparent-cheeseburger-whopper-hamburger-cheeseburger-bacon-burger-king-specialty-sandwiches-burger-king-food-cheese-recipe-thumbnail.png"/>
-              <Details>
-                <TitleTop>{order.id} - {order.name}</TitleTop>
-                {order.itemDetails.map((item, i) => {
-                  return (
-                    <>
-                      <Box key={i}>
-                        <Description>{item.quantity} x {item.product.name}</Description>
-                        {(item.itemAdditional.length > 0) && item.itemAdditional.map((elem, i) =>{
-                          return (
-                            <Description key={i} >Adicional: {elem.additional.name}</Description>
-                          )
-                        })}
-                      </Box>
-                    </>
-                  );
-                })}
-              </Details>
-              <BoxButtons>
-                {order.status === "completed" ?  
-                  <StyledButton type="cancel" id={order.id} status="cancelled" getAllOrders={getAllOrders}/>
-                :
-                <>
-                  <StyledButton type="cancel" id={order.id} status="cancelled" getAllOrders={getAllOrders}/>
-                  <StyledButton type="complete" id={order.id} status="completed" getAllOrders={getAllOrders}/>
-                </>
-                }
-              </BoxButtons>
-            </OrderContainer>
-            {order.itemDetails.map((item, i) => {
-              if(item.observations.length > 0){
-              return (
-                <>
-                  <Details key={i}>
-                    <TitleTop>Observações: </TitleTop>
-                    <Text>{item.observations}</Text>
-                  </Details>
-                </>
-              )} else{
-                return (<></>);
-              }
-            })}
-          </Container>
-        )
-      })}
-    </>
-  )
-}
-
-export default OrderKitchenDetails;
 
 const Container = styled.div<OrderStatusProps>`
-  width:90%;
-  min-height:120px;
-  padding:15px;
-  margin:25px;
+  width: 90%;
+  min-height: 120px;
+  padding: 15px;
+  margin: 25px;
 
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 
-  gap:10px;
-  border-radius:5px;
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.3);
-  border: ${props => (props.status === "completed") ? "solid 1px #125c13" : 'none'};
+  gap: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border: ${props =>
+    props.status === 'completed' ? 'solid 1px #125c13' : 'none'};
 `;
 
 const OrderContainer = styled.div`
-  width:100%;
+  width: 100%;
 
-  display:flex;
+  display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 
-  gap:15px;
+  gap: 15px;
 `;
 
 const Image = styled.img`
-  width:75px;
-  height:75px;
-  object-fit:cover;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
 `;
 const Details = styled.div`
-  width:100%;
+  width: 100%;
 
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const TitleTop = styled.div`
-  width:100%;
+  width: 100%;
 
   background-color: #fff;
   font-family: 'Poppins';
-  font-size:14px;
+  font-size: 14px;
   font-weight: 600;
 `;
 
 const Box = styled.div`
   display: flex;
-  flex-direction:column;
-  justify-content:left;
-  align-items:flex-start;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
 `;
 
 const Description = styled.div`
   width: 100%;
-  
+
   font-family: 'Poppins';
-  font-size:12px;
+  font-size: 12px;
   font-weight: 400;
-  color:#363636;
+  color: #363636;
 `;
 
 const BoxButtons = styled.div`
-  width:50%;
-  display:flex;
+  width: 50%;
+  display: flex;
   align-items: flex-start;
-  justify-content:center;
-  gap:10px;
+  justify-content: center;
+  gap: 10px;
 `;
 
 const Text = styled.div`
-  width:100%;
+  width: 100%;
   min-height: 75px;
 
-  padding:10px;
-  display:flex;
-  align-items:flex-start;
-  justify-content:left;
+  padding: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
 
-  border:solid 1px #DADADA;
+  border: solid 1px #dadada;
   border-radius: 5px;
 `;
+
+// eslint-disable-next-line react/function-component-definition
+const OrderKitchenDetails: React.FC<OrderKitchenProps> = ({
+  orderList,
+  getAllOrders,
+}) => {
+  return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {orderList?.map(order => {
+        return (
+          <Container key={order.id} status={order.status}>
+            <OrderContainer key={order.id}>
+              <Image
+                alt="imagem do produto"
+                src="https://w7.pngwing.com/pngs/993/43/png-transparent-cheeseburger-whopper-hamburger-cheeseburger-bacon-burger-king-specialty-sandwiches-burger-king-food-cheese-recipe-thumbnail.png"
+              />
+              <Details>
+                <TitleTop>
+                  {order.id} - {order.name}
+                </TitleTop>
+                {order.itemDetails.map(item => {
+                  return (
+                    <Box key={item.id}>
+                      <Description>
+                        {item.quantity} x {item.product.name}
+                      </Description>
+                      {item.itemAdditional.length > 0 &&
+                        item.itemAdditional.map(elem => {
+                          return (
+                            <Description key={elem.id}>
+                              Adicional: {elem.additional.name}
+                            </Description>
+                          );
+                        })}
+                    </Box>
+                  );
+                })}
+              </Details>
+              <BoxButtons>
+                {order.status === 'completed' ? (
+                  <StyledButton
+                    type="cancel"
+                    id={order.id}
+                    status="cancelled"
+                    getAllOrders={getAllOrders}
+                  />
+                ) : (
+                  <>
+                    <StyledButton
+                      type="cancel"
+                      id={order.id}
+                      status="cancelled"
+                      getAllOrders={getAllOrders}
+                    />
+                    <StyledButton
+                      type="complete"
+                      id={order.id}
+                      status="completed"
+                      getAllOrders={getAllOrders}
+                    />
+                  </>
+                )}
+              </BoxButtons>
+            </OrderContainer>
+            {order.itemDetails.map(item => {
+              if (item.observations.length > 0) {
+                return (
+                  <Details key={item.id}>
+                    <TitleTop>Observações: </TitleTop>
+                    <Text>{item.observations}</Text>
+                  </Details>
+                );
+              }
+              // eslint-disable-next-line react/jsx-no-useless-fragment
+              return <></>;
+            })}
+          </Container>
+        );
+      })}
+    </>
+  );
+};
+
+export default OrderKitchenDetails;

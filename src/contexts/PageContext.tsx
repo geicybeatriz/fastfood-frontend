@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useState } from 'react';
 
 interface PageProviderProps {
   children: ReactNode;
@@ -9,14 +9,16 @@ interface PageContextProps {
 }
 const PageContext = createContext<PageContextProps | undefined>(undefined);
 
+// eslint-disable-next-line react/function-component-definition
 const PageProvider: React.FC<PageProviderProps> = ({ children }) => {
-  const [selected, setSelected] = useState<string>("pedidos");
+  const [selected, setSelected] = useState<string>('pedidos');
 
   return (
-      <PageContext.Provider value={{ selected, setSelected }}>{children}</PageContext.Provider>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <PageContext.Provider value={{ selected, setSelected }}>
+      {children}
+    </PageContext.Provider>
   );
 };
 
-export {
-  PageContext, PageProvider
-};
+export { PageContext, PageProvider };
