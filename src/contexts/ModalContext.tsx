@@ -13,8 +13,8 @@ const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [productId, setProductId] = useState(2);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [productId, setProductId] = useState<number>(0);
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const openModal = (productId: number) => {

@@ -56,7 +56,7 @@ export default function SearchList({
         return (
           // eslint-disable-next-line react/no-array-index-key
           <Item key={id} onClick={() => handleItemClick(id)}>
-            {item.name}{' '}
+            {item.name}
           </Item>
         );
       })}

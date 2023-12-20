@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import BodyPage from '../components/BodyPage/BodyPage';
 import Header from '../components/header/Header';
+import ProductContent from '../components/Products/ProductContent';
 
 export default function Homepage() {
   return (
@@ -9,6 +10,7 @@ export default function Homepage() {
     <StyledPageContainer>
       <Header />
       <BodyPage />
+      <ProductContent />
     </StyledPageContainer>
   );
 }
