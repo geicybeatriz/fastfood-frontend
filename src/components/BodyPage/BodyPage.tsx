@@ -13,6 +13,7 @@ const ContainerBodyPage = styled.main`
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
+  overflow-x: hidden;
 
   @media screen and (min-width: 427px) {
     min-height: 100px;

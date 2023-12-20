@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Product } from '../../interfaces/interfaces';
 import productService from '../../services/ProductsService';
 import { CategorySelectProps } from '../BodyPage/BodyPage';
+import { useModal } from '../../contexts/ModalContext';
 
 const Container = styled.div<ProductProps>`
   width: 130px;
@@ -101,6 +102,7 @@ interface ProductProps {
 // eslint-disable-next-line react/function-component-definition
 const ProductComponent: React.FC<CategorySelectProps> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const { openModal } = useModal();
 
   useEffect(() => {
     const fetchData = () => {
@@ -136,7 +138,11 @@ const ProductComponent: React.FC<CategorySelectProps> = ({ category }) => {
     <>
       {filteredProducts.map(item => {
         return (
-          <Container key={item.id} id={item.id}>
+          <Container
+            key={item.id}
+            id={item.id}
+            onClick={() => openModal(item.id)}
+          >
             <RedOverlay />
             <ProductCircle>
               <ProductImage src={item.picture} alt={item.name} />

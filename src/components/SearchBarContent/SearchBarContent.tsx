@@ -41,14 +41,10 @@ const Title = styled.h2`
 `;
 
 export default function SearchBarContent() {
-  function handleSearch(query: string) {
-    // eslint-disable-next-line no-console
-    console.log(query);
-  }
   return (
     <Container>
       <Title>Seja bem-vindo!</Title>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar />
     </Container>
   );
 }

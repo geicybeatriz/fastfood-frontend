@@ -1,9 +1,4 @@
-import React, {
-  Dispatch,
-  KeyboardEvent,
-  SetStateAction,
-  useState,
-} from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { Product } from '../../interfaces/interfaces';
 import productService from '../../services/ProductsService';
@@ -39,10 +34,6 @@ const StyledInput = styled.input`
   }
 `;
 
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-}
-
 export interface SearchListProps {
   options: Product[];
   open: boolean;
@@ -50,7 +41,7 @@ export interface SearchListProps {
 }
 
 // eslint-disable-next-line react/function-component-definition
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar = () => {
   const [query, setQuery] = useState<string>('');
   const [options, setOptions] = useState<Product[]>([]);
   const [open, setOpen] = useState<boolean>(false);
@@ -73,18 +64,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     }
   };
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      onSearch(query);
-    }
-  };
-
   return (
     <Container>
       <StyledInput
         type="text"
         value={query}
-        onKeyDown={handleKeyDown}
         onChange={handleInputChange}
         placeholder="O que você procura?"
       />
