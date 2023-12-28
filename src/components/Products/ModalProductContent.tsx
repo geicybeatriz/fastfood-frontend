@@ -3,9 +3,12 @@ import { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import styled from 'styled-components';
 import { useModal } from '../../contexts/ModalContext';
-import { Product } from '../../interfaces/interfaces';
+import { CartItem, Product } from '../../interfaces/interfaces';
 import productService from '../../services/ProductsService';
+import AdditionalsContent from '../Additionals/AdditionalsContent';
 import ProductDetails from './ProductDetails';
+import OrderNotes from '../OrderNotes/OrderNotes';
+import FooterModal from '../Footer/FooterModal';
 
 interface ModalProductProps {
   id: number;
@@ -15,6 +18,15 @@ interface ModalProductProps {
 const ModalProductContent: React.FC<ModalProductProps> = ({ id }) => {
   const { closeModal } = useModal();
   const [productData, setProductData] = useState<Product>();
+  const [orderNotes, setOrderNotes] = useState<string>('');
+  const [newItem, setNewItem] = useState<CartItem>({
+    id,
+    name: '',
+    price: 0,
+    quantity: 1,
+    observations: orderNotes,
+    additionals: [],
+  });
 
   function getProductById() {
     const promise = productService.getProductById(id);
@@ -46,6 +58,11 @@ const ModalProductContent: React.FC<ModalProductProps> = ({ id }) => {
           description={productData.description}
         />
       )}
+      {productData?.category === ('snacks' || 'combo') && (
+        <AdditionalsContent setNewItem={setNewItem} />
+      )}
+      <OrderNotes orderNotes={orderNotes} setOrderNotes={setOrderNotes} />
+      <FooterModal newItem={newItem} />
     </Container>
   );
 };

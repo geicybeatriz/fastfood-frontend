@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Product } from '../../interfaces/interfaces';
 import ItemQuantityController from './ItemQuantityController';
 
-type ProductDetailsProps = Omit<Product, 'category' | 'id'>;
+interface ProductDetailsProps {
+  name: string;
+  picture: string;
+  price: number;
+  description: string;
+}
 
 // eslint-disable-next-line react/function-component-definition
 const ProductDetails: React.FC<ProductDetailsProps> = ({

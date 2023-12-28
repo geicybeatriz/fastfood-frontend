@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BodyPage from '../components/BodyPage/BodyPage';
 import Header from '../components/header/Header';
 import ProductContent from '../components/Products/ProductContent';
+import FooterHomepage from '../components/Footer/FooterHomepage';
 
 export default function Homepage() {
   return (
@@ -11,6 +12,7 @@ export default function Homepage() {
       <Header />
       <BodyPage />
       <ProductContent />
+      <FooterHomepage />
     </StyledPageContainer>
   );
 }

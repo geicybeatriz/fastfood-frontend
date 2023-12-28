@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {
   ReactNode,
   createContext,
@@ -5,21 +6,7 @@ import React, {
   useEffect,
   useReducer,
 } from 'react';
-
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  observations?: string;
-  additionals: AdditionalItems[];
-}
-
-interface AdditionalItems {
-  id: number;
-  name: string;
-  price: number;
-}
+import { CartItem } from '../interfaces/interfaces';
 
 interface CartState {
   cartItems: CartItem[];
@@ -61,6 +48,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const storedCart = localStorage.getItem('cart');
+    console.log('local', storedCart);
     if (storedCart) {
       dispatch({ type: 'SET_CART', payload: JSON.parse(storedCart) });
     }

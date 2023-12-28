@@ -49,3 +49,18 @@ export interface OrderByGetAllOrders {
   amount: number;
   itemDetails: ItemDetail[];
 }
+
+export interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  observations?: string;
+  additionals: AdditionalItems[];
+}
+
+export interface AdditionalItems {
+  id: number;
+  name: string;
+  price: number;
+}
